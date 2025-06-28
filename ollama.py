@@ -26,12 +26,6 @@ def load_model():
      )
      return llm
 
-# OLLAMA_BASE_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434")
-# OLLAMA_API_URL = f"{OLLAMA_BASE_URL}/api/generate"
-# MODEL = os.getenv("MODEL", "phi")
-# # EMBEDDINGS_MODEL = "nomic-embed-text:latest"
-# # CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L6-v2"
-
 def load_documents(file_path):
      if not os.path.exists(file_path):
           raise FileNotFoundError(f"File {file_path} not found.")
@@ -55,13 +49,15 @@ def chunk_documents(documents):
           chunk_overlap=100
      )
      chunks = text_splitter.split_documents(documents)
+  
      return chunks
-
-from sentence_transformers import SentenceTransformer
-model_name = "all-MiniLM-L6-v2"
-save_path = "./models/all-MiniLM-L6-v2"
-model = SentenceTransformer(model_name)
-model.save(save_path)
+     
+#run once for downloading embedding model (internet required)
+# from sentence_transformers import SentenceTransformer
+# model_name = "all-MiniLM-L6-v2"
+# save_path = "./models/all-MiniLM-L6-v2"
+# model = SentenceTransformer(model_name)
+# model.save(save_path)
 
 def create_vector_store(chunks):
      embeddings = HuggingFaceEmbeddings(
