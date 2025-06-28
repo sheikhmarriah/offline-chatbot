@@ -13,14 +13,14 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 import streamlit as st
 from sentence_transformers import SentenceTransformer
-from dotenv import load_dotenv, find_dotenv
-torch.classes.__path__ = [os.path.join(torch.__path__[0], torch.classes.__file__)]
-load_dotenv(find_dotenv())
+# from dotenv import load_dotenv, find_dotenv
+# torch.classes.__path__ = [os.path.join(torch.__path__[0], torch.classes.__file__)]
+# load_dotenv(find_dotenv())
 
 def load_model():
      llm = OllamaLLM(
-          model= os.getenv("phi"),
-          base_url= os.getenv("http://localhost:11434"),
+          model= "phi",
+          base_url= "http://localhost:11434",
           temperature=0.9,
           max_tokens=512,
      )
