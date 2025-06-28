@@ -1,0 +1,9 @@
+langchain-ollama
+langchain-community
+langchain
+sentence-transformers
+transformers
+faiss-cpu
+streamlit
+pypdf
+docx2txt
